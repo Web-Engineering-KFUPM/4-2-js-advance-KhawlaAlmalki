@@ -21,6 +21,44 @@ Task:
 3) Add a setter updateGpa(newGpa) or use a set accessor for gpa that validates 0.0–4.0.
 4) Create an instance/object and output its attributes using the getter(s).
 */
+// TODO-1: OBJECT with GETTERS & SETTERS
+// ==========================
+
+// Define a Student object
+const student = {
+    firstName: "Khawla",
+    lastName: "Al-Malki",
+    _gpa: 3.5, // private-like property (by convention, with _)
+
+    // Getter for fullName
+    get fullName() {
+        return `${this.firstName} ${this.lastName}`;
+    },
+
+    // Getter for GPA
+    get gpa() {
+        return this._gpa;
+    },
+
+    // Setter for GPA with validation
+    set gpa(newGpa) {
+        if (newGpa >= 0.0 && newGpa <= 4.0) {
+            this._gpa = newGpa;
+        } else {
+            console.log("Invalid GPA. Must be between 0.0 and 4.0.");
+        }
+    }
+};
+
+// Usage
+console.log("Full Name:", student.fullName);
+console.log("Current GPA:", student.gpa);
+
+student.gpa = 3.9;  // update valid GPA
+console.log("Updated GPA:", student.gpa);
+
+student.gpa = 5.0;  // invalid GPA
+console.log("After invalid GPA attempt:", student.gpa); //
 
 // ====================================
 // TODO-2: OBJECT AS MAP + for...in LOOP
